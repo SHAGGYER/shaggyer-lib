@@ -12,9 +12,10 @@
   },
   "types": "dist/index.d.ts",
   "keywords": [],
-  "author": "",
+  "author": "Shaggyer",
+  "homepage": "https://github.com/SHAGGYER",
   "license": "ISC",
-  "description": "",
+  "description": "Saas Factory Lib",
   "devDependencies": {
     "esbuild": "^0.24.0"
   },
