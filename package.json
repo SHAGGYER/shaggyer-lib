@@ -1,6 +1,6 @@
 {
   "name": "shaggyer-lib",
-  "version": "1.0.28",
+  "version": "1.0.29",
   "main": "dist/index.js",
   "scripts": {
     "build": "rm -rf dist && tsc",
@@ -23,6 +23,7 @@
     "@aws-sdk/client-s3": "^3.676.0",
     "@types/mailparser": "^3.4.5",
     "@types/nodemailer": "^6.4.16",
+    "@vonage/server-sdk": "^3.19.2",
     "express-fileupload": "^1.5.1",
     "mailparser": "^3.7.1",
     "moment": "^2.30.1",
