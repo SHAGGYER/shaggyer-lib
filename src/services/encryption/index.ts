@@ -35,9 +35,6 @@ export class EncryptionService {
       const publicKey = fs.readFileSync(publicKeyPath, "utf8");
       const privateKey = fs.readFileSync(privateKeyPath, "utf8");
 
-      console.log("publicKey", publicKey);
-      console.log("privateKey", privateKey);
-
       // If keys are successfully loaded, set them in the class
       this.publicKey = publicKey;
       this.privateKey = privateKey;
