@@ -173,7 +173,7 @@ export class MailService {
         html: templateHtml,
       });
     } catch (e) {
-      console.log(e.message);
+      console.error(e.message);
     }
   }
 
