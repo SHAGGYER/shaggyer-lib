@@ -1,6 +1,6 @@
 {
   "name": "shaggyer-lib",
-  "version": "1.0.2",
+  "version": "1.0.26",
   "main": "dist/index.js",
   "scripts": {
     "build": "rm -rf dist && tsc",

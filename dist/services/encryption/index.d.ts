@@ -4,5 +4,5 @@ export declare class EncryptionService {
     static publicKey: string;
     static rsaKeyPair: forge.pki.rsa.KeyPair;
     static decryptData(encryptedData: string): any;
-    static generateEncryptionKeys(): void;
+    static generateEncryptionKeys(publicKeyPath: string, privateKeyPath: string): void;
 }

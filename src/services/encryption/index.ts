@@ -1,5 +1,6 @@
 import forge from "node-forge";
 import fs from "fs";
+import path from "path";
 
 export class EncryptionService {
   public static privateKey: string;
@@ -24,27 +25,40 @@ export class EncryptionService {
     }
   }
 
-  public static generateEncryptionKeys() {
+  public static generateEncryptionKeys(
+    publicKeyPath: string,
+    privateKeyPath: string
+  ) {
     try {
       // Try to read existing keys from disk
-      const publicKey = fs.readFileSync("../client/public/public.pem", "utf8");
-      const privateKey = fs.readFileSync("./private.pem", "utf8");
+
+      const publicKey = fs.readFileSync(publicKeyPath, "utf8");
+      const privateKey = fs.readFileSync(privateKeyPath, "utf8");
+
+      console.log("publicKey", publicKey);
+      console.log("privateKey", privateKey);
 
       // If keys are successfully loaded, set them in the class
       this.publicKey = publicKey;
       this.privateKey = privateKey;
+
+      console.info("Encryption keys loaded from disk.");
     } catch (error) {
       // If keys don't exist on disk, generate new ones
+      console.info("Encryption keys not found on disk. Generating new keys...");
+
       const rsaKeyPair = forge.pki.rsa.generateKeyPair({ bits: 2048 });
       const publicKeyPem = forge.pki.publicKeyToPem(rsaKeyPair.publicKey);
       const privateKeyPem = forge.pki.privateKeyToPem(rsaKeyPair.privateKey);
 
-      fs.writeFileSync("../client/public/public.pem", publicKeyPem, "utf8");
-      fs.writeFileSync("./private.pem", privateKeyPem, "utf8");
+      fs.writeFileSync(publicKeyPath, publicKeyPem, "utf8");
+      fs.writeFileSync(privateKeyPath, privateKeyPem, "utf8");
 
       // Set the keys in the class
       this.publicKey = publicKeyPem;
       this.privateKey = privateKeyPem;
+
+      console.info("New encryption keys generated and saved to disk.");
     }
   }
 }
